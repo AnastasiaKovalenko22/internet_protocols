@@ -180,11 +180,11 @@ class DNSPacket:
             record_type, record_class, record_ttl, record_length = struct.unpack(">2HIH",
                                                                                  self.data[offset: offset + 10])
             offset += 10
-            if record_type == 1:  # A
+            if record_type == 1:
                 domain_ip = struct.unpack(">4B", self.data[offset:offset + 4])
                 offset += 4
                 list_of_records.append((domain, record_type, record_ttl, 4, domain_ip))
-            elif record_type == 2:  # NS
+            elif record_type == 2:
                 dns_name, end_name_position = self.get_domain(offset, record_length)
                 list_of_records.append((domain, record_type, record_ttl, end_name_position - offset, dns_name))
                 offset = end_name_position
