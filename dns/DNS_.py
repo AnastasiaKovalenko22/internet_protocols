@@ -2,7 +2,6 @@ import argparse
 import socket
 import pickle
 import time
-from dns_packet import DNSPacket
 import struct
 
 
